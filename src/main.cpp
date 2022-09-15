@@ -16,7 +16,9 @@ int main()
 {
     std::cout << "Hello World!" << std::endl;
 
-    Button button1(27);
+    Button modeButton(27);
+    Button powerButton(28);
+
     ClockCheck clockCheck;
     Led led1(21);
     Led led2(22);
@@ -24,12 +26,12 @@ int main()
     Led led4(24);
     Led led5(25);
     LCD lcd(new I2C("/dev/i2c-1", 0x27));
-    View view(&led1, &led2, &led3, &led4, &led5);
+    View view(&led1, &led2, &led3, &led4, &led5, &lcd);
     ClockView clockView(&lcd);
     Service service(&view);
     ClockService clockSerivce(&clockView);
     Controller control(&service, &clockSerivce);
-    Listener listener(&button1, &control, &clockCheck);
+    Listener listener(&modeButton, &powerButton, &control, &clockCheck);
     
     while (1)
     {

@@ -19,38 +19,54 @@ void Service::updateState(std::string strState)
             if (strState == "modeButton") {
                 lightState = LIGHT_1;
                 view->setState(lightState);
-            }
+
+            }            
         break;
 
         case LIGHT_1:
             if (strState == "modeButton") {
                 lightState = LIGHT_2;
-                view->setState(lightState);
             }
+            if (strState == "powerButton") {
+                lightState = LIGHT_OFF;
+            }
+            view->setState(lightState);
         break;
         case LIGHT_2:
             if (strState == "modeButton") {
                 lightState = LIGHT_3;
-                view->setState(lightState);
             }
+            if (strState == "powerButton") {
+                lightState = LIGHT_OFF;
+            }
+            view->setState(lightState);
         break;
         case LIGHT_3:
             if (strState == "modeButton") {
                 lightState = LIGHT_4;
-                view->setState(lightState);
             }
+            if (strState == "powerButton") {
+                lightState = LIGHT_OFF;
+            }
+            view->setState(lightState);
         break;
         case LIGHT_4:
             if (strState == "modeButton") {
                 lightState = LIGHT_5;
-                view->setState(lightState);
             }
+            if (strState == "powerButton") {
+                lightState = LIGHT_OFF;
+            }
+            view->setState(lightState);
         break;
         case LIGHT_5:
             if (strState == "modeButton") {
                 lightState = LIGHT_OFF;
-                view->setState(lightState);
             }
+            if (strState == "powerButton") {
+                lightState = LIGHT_OFF;
+            }
+            view->setState(lightState);
         break;
     }
 }

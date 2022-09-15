@@ -1,13 +1,14 @@
 #include "View.h"
 #include <wiringPi.h>
 
-View::View(Led *led1, Led *led2, Led *led3, Led *led4, Led *led5)
+View::View(Led *led1, Led *led2, Led *led3, Led *led4, Led *led5, LCD *lcd)
 {
     light1 = led1;
     light2 = led2;
     light3 = led3;
     light4 = led4;
     light5 = led5;
+    this->lcd=lcd;
     lightState = LIGHT_OFF;
 }
 
@@ -48,6 +49,9 @@ void View::lightView()
 
 void View::lightOn_1()
 {
+    char buff[30];
+    sprintf(buff,"Light 1   ");
+    lcd->WriteStringXY(0,0,buff);
     light1->On();
     light2->Off();
     light3->Off();
@@ -57,6 +61,9 @@ void View::lightOn_1()
 
 void View::lightOn_2()
 {
+    char buff[30];
+    sprintf(buff,"Light 2   ");
+    lcd->WriteStringXY(0,0,buff);
     light1->On();
     light2->On();
     light3->Off();
@@ -66,6 +73,9 @@ void View::lightOn_2()
 
 void View::lightOn_3()
 {
+    char buff[30];
+    sprintf(buff,"Light 3   ");
+    lcd->WriteStringXY(0,0,buff);
     light1->On();
     light2->On();
     light3->On();
@@ -75,6 +85,9 @@ void View::lightOn_3()
 
 void View::lightOn_4()
 {
+    char buff[30];
+    sprintf(buff,"Light 4   ");
+    lcd->WriteStringXY(0,0,buff);
     light1->On();
     light2->On();
     light3->On();
@@ -84,6 +97,9 @@ void View::lightOn_4()
 
 void View::lightOn_5()
 {
+    char buff[30];
+    sprintf(buff,"Light 5   ");
+    lcd->WriteStringXY(0,0,buff);
     light1->On();
     light2->On();
     light3->On();
@@ -93,6 +109,10 @@ void View::lightOn_5()
 
 void View::lightOff()
 {
+    char buff[30];
+    sprintf(buff,"Light Off  ");
+    lcd->WriteStringXY(0,0,buff);
+    // lcd->backLightOff();
     light1->Off();
     light2->Off();
     light3->Off();
